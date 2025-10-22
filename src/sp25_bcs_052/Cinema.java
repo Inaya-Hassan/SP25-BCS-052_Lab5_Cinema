@@ -1,4 +1,5 @@
 package sp25_bcs_052;
+
 public class Cinema {
 	private String cinemaName;
 	private Screen[] screens;
@@ -77,7 +78,7 @@ public class Cinema {
 	return false;
 	}
 
-
+//...
 	public int getTotalSeats() {
         	int total = 0;
         	for (int i = 0; i < counter; i++) {
@@ -126,5 +127,5 @@ public class Cinema {
                 cinemaName, counter, getTotalSeats(), getAvailableSeats());
     	}
 
-
+	
 }

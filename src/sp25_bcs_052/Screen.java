@@ -1,4 +1,5 @@
 package sp25_bcs_052;
+import java.util.Random;
 public class Screen {
 
 	private Seat[][] seats;
@@ -50,7 +51,6 @@ public class Screen {
 		}
 	}
 
-// A simple method to print seat layout
 	public void displayLayout() {
 		for (int i = 0; i < seats.length; i++) {
 			for (int j = 0; j < seats[i].length; j++) {
@@ -70,7 +70,6 @@ public class Screen {
 		return screenName;
 	}
 
-//method overloading 
 	public Seat getSeat(String id) {
 		for( int i = 0; i < seats.length; i++) {
 			for(int j = 0; j < seats[i].length; j++) {
@@ -82,15 +81,15 @@ public class Screen {
 	return null;
 	}
 	public Seat getSeat(int row, int column) {
-		checkBounds(row + 1, column + 1); // use human-readable numbers
+		checkBounds(row + 1, column + 1); 
 
 		if(row >= 0 && row < seats.length && column >= 0 && column < seats[row].length) {
 			return seats[row][column];
 		}
 	return null;
 	}			
-
-	public boolean bookSeat(int row, int column) {
+//MISSED
+	/*public boolean bookSeat(int row, int column) {
 		checkBounds(row, column);
 		int rows = row - 1;
     		int columns = column - 1;
@@ -99,7 +98,7 @@ public class Screen {
 			return seat.bookSeat();
 		}
 	return false;
-	}
+	}*/
 	public boolean bookSeat(String id) {
 		Seat seat = getSeat(id);
 		if(seat != null) {
@@ -108,7 +107,7 @@ public class Screen {
 	return false;
 	}
 
-	public boolean cancelBooking(int row, int column) {
+	/*public boolean cancelBooking(int row, int column) {
 		checkBounds(row, column);
 		int rows = row - 1; //to convert java array system to human 
     		int columns = column - 1;
@@ -117,7 +116,7 @@ public class Screen {
 			return seat.cancelBooking();
 		}
 	return false;
-	}
+	}*/
 	public boolean cancelBooking(String id) {
 		Seat seat = getSeat(id);
 		if(seat != null) {
@@ -137,7 +136,7 @@ public class Screen {
 			System.out.println("Invalid row & column.");	
 		}
 	}
-
+//....
 	public int getTotalSeatCount() {
 		int total = 0;
 		for (int i = 0; i < seats.length; i++) {
@@ -169,8 +168,7 @@ public class Screen {
     		}
     	return count;
 	}
-
-	
+//WHAT KINDOFF SEAT IS AT PARTICULAR POSITION	MISSED
 	public SeatType seatTypeFor(int row, int column) {
 		Seat seat = getSeat(row, column);
 			if(seat != null) {
@@ -235,6 +233,7 @@ public class Screen {
         		}
     		}
     	return available;
+
 	}
 
 // Verbose layout display with full details
@@ -247,6 +246,30 @@ public class Screen {
         	System.out.println();
     		}
 	}
+
+	public void bookRandomSeats() {
+		Random rand = new Random();
+		
+	
+		for(int i = 0; i < 15; i++) {
+			int rR = rand.nextInt(seats.length);
+			int rC = rand.nextInt(seats[rR].length);
+		
+		Seat randomSeat = seats[rR][rC];
+
+		boolean booked = randomSeat.bookSeat();
+			if (booked) {
+				System.out.println (randomSeat.getId() + "booked");
+			}else {
+			System.out.println(randomSeat.getId() + "not booked" );
+
+			}
+		}
+	}
+
+
+
+
 
 
 

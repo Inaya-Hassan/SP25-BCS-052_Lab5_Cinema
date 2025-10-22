@@ -1,11 +1,13 @@
 package sp25_bcs_052;
 public class CityCinema {
 
+
 	private String cityName;
 	private Cinema[] cinemas;
 	private int count;
 
 
+	
 	public CityCinema(String cityName, int numCinemas) {
 		this.cityName = cityName;
 		this.cinemas = new Cinema[numCinemas];
